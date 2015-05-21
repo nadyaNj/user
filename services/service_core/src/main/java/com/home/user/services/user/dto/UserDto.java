@@ -1,5 +1,7 @@
 package com.home.user.services.user.dto;
 
+import com.home.user.services.user.model.User;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -74,6 +76,14 @@ public class UserDto implements Serializable {
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
+
+     public void updateDomainEntityModelProperties(final User entity) {
+         entity.setName(getName());
+         entity.setPassword(getPassword());
+         entity.setSecondName(getSecondName());
+         entity.setFistName(getFirstName());
+         entity.setCreated(getCreated());
+     }
 
 
 }

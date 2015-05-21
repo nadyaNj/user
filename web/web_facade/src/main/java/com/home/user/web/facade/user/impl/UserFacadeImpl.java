@@ -2,6 +2,8 @@ package com.home.user.web.facade.user.impl;
 
 
 import com.home.user.persistence.repository.user.UserRepository;
+import com.home.user.services.user.UserService;
+import com.home.user.services.user.dto.UserDto;
 import com.home.user.services.user.model.User;
 import com.home.user.web.facade.user.UserModelFacade;
 import com.home.user.web.facade.user.model.UserFacadeModel;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Nonnull;
 import java.util.List;
 
- /**
+/**
  * Created: Nadya Dainelyan
  * DATE:    5/14/15
  * TIME:    11:47 AM
@@ -24,6 +26,8 @@ public class UserFacadeImpl implements UserModelFacade {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private UniversalConverter universalConverter;
@@ -42,9 +46,13 @@ public class UserFacadeImpl implements UserModelFacade {
         return universalConverter.convertList(userRepository.findAll(), UserFacadeModel.class);
     }
 
-     @Nonnull
-     @Override
-     public void createUser(UserModelFacade userModelFacade) {
-         userRepository.save(universalConverter.convert(userModelFacade, User.class));
-     }
- }
+    @Nonnull
+    @Override
+    public UserModelFacade createUser(UserDto userDto) {
+        User user = new User();
+        userDto.updateDomainEntityModelProperties(user);
+        user = userService.createUser(user);
+
+        return universalConverter.convert(user, UserModelFacade.class);
+    }
+}

@@ -1,11 +1,10 @@
 package com.home.user.web.admin.ui.pages.user.helper.impl;
 
+import com.home.user.services.user.dto.UserDto;
 import com.home.user.web.admin.ui.pages.user.helper.UserPageHelper;
 import com.home.user.web.admin.ui.pages.user.model.UserPageModel;
 import com.home.user.web.facade.user.UserModelFacade;
-import com.home.user.web.facade.user.impl.UserFacadeImpl;
-import com.home.user.web.facade.util.UniversalConverter;
-import com.home.user.web.facade.util.UniversalConverterImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nonnull;
 
@@ -15,11 +14,20 @@ import javax.annotation.Nonnull;
  * TIME:    12:18 AM
  */
 public class UserPageHelperImpl implements UserPageHelper {
+
+    @Autowired
+    private UserModelFacade userModelFacade;
+
     @Override
     public void createUser(@Nonnull UserPageModel userPageModel) {
 
-        UserModelFacade userModelFacade = new UserFacadeImpl();
-        UniversalConverter universalConverter = new UniversalConverterImpl();
-        userModelFacade.createUser(universalConverter.convert(userPageModel, UserModelFacade.class));
+        final UserDto userDto = new UserDto();
+        userDto.setName(userPageModel.getName());
+        userDto.setFirstName(userPageModel.getFirstName());
+        userDto.setSecondName(userPageModel.getSecondName());
+        userDto.setPassword(userPageModel.getPassword());
+        userDto.setCreated(userPageModel.getCreated());
+
+        userModelFacade.createUser(userDto);
     }
 }

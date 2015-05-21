@@ -1,6 +1,7 @@
 package com.home.user.web.facade.user;
 
 
+import com.home.user.services.user.dto.UserDto;
 import com.home.user.web.facade.user.model.UserFacadeModel;
 
 import javax.annotation.Nonnull;
@@ -20,7 +21,7 @@ public interface UserModelFacade {
     List<UserFacadeModel> getAll();
     
     @Nonnull
-    void createUser(UserModelFacade userModelFacade);
+    UserModelFacade createUser(final UserDto userDto);
 
 
 }
