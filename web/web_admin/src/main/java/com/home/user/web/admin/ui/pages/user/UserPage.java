@@ -39,7 +39,7 @@ public class UserPage extends WebPage {
             userPageModel.setSecondName(secondName.getInput());
             userPageModel.setPassword(password.getInput());
 
-            Form loginForm = new Form("loginForm") {
+            Form loginForm = new Form(id) {
                 @Override
                 protected void onSubmit() {
                     userPageHelper.createUser(userPageModel);
