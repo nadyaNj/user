@@ -5,13 +5,14 @@ import com.home.user.persistence.repository.user.UserRepository;
 import com.home.user.services.user.UserService;
 import com.home.user.services.user.dto.UserDto;
 import com.home.user.services.user.model.User;
-import com.home.user.web.facade.user.UserModelFacade;
+import com.home.user.web.facade.user.UserFacade;
 import com.home.user.web.facade.user.model.UserFacadeModel;
 import com.home.user.web.facade.util.UniversalConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ import java.util.List;
  * TIME:    11:47 AM
  */
 @Service
-public class UserFacadeImpl implements UserModelFacade {
+public class UserFacadeImpl implements UserFacade {
 
 
     @Autowired
@@ -48,11 +49,14 @@ public class UserFacadeImpl implements UserModelFacade {
 
     @Nonnull
     @Override
-    public UserModelFacade createUser(UserDto userDto) {
+    public UserFacadeModel createUser(@Nonnull final UserDto userDto) {
         User user = new User();
         userDto.updateDomainEntityModelProperties(user);
+        user.setCreated(LocalDateTime.now());
+        user.setUpdated(LocalDateTime.now());
+
         user = userService.createUser(user);
 
-        return universalConverter.convert(user, UserModelFacade.class);
+        return universalConverter.convert(user, UserFacadeModel.class);
     }
 }

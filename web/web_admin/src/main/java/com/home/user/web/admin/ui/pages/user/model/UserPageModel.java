@@ -3,33 +3,35 @@ package com.home.user.web.admin.ui.pages.user.model;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.wicket.markup.html.WebPage;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
 /**
  * Created: Nadya Dainelyan
  * DATE:    5/16/15
  * TIME:    8:41 PM
  */
-public class UserPageModel extends WebPage{
+public class UserPageModel implements Serializable {
 
     private static final long serialVersionUID = 4694958652116807815L;
 
-    private String name;
-    private String password;
-    private String firstName;
-    private String secondName;
-    private LocalDateTime created;
 
+    /*Properties*/
+    private String name;
+
+    private String password;
+
+    private String firstName;
+
+    private String secondName;
+
+
+    /*Getters and setters*/
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -37,29 +39,15 @@ public class UserPageModel extends WebPage{
         return password;
     }
 
-    public void setPassword(String password) {
-        MessageDigest m = null;
-        try {
-            m = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        m.reset();
-        m.update(password.getBytes());
-        byte[] digest = m.digest();
-        BigInteger bigInt = new BigInteger(1,digest);
-        String hashtext = bigInt.toString(16);
-        while(hashtext.length() < 32 ){
-            hashtext = "0"+hashtext;
-        }
-        this.password = hashtext.toString();
+    public void setPassword(final String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -67,20 +55,12 @@ public class UserPageModel extends WebPage{
         return secondName;
     }
 
-    public void setSecondName(String secondName) {
+    public void setSecondName(final String secondName) {
         this.secondName = secondName;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated() {
-        this.created = LocalDateTime.now();
-    }
-
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -90,14 +70,13 @@ public class UserPageModel extends WebPage{
         if (obj.getClass() != getClass()) {
             return false;
         }
-        UserPageModel rhs = (UserPageModel) obj;
+        final UserPageModel rhs = (UserPageModel) obj;
         return new EqualsBuilder()
                 .appendSuper(super.equals(obj))
                 .append(this.getName(), rhs.getName())
                 .append(this.getPassword(), rhs.getPassword())
                 .append(this.getFirstName(), rhs.getFirstName())
                 .append(this.getSecondName(), rhs.getSecondName())
-                .append(this.getCreated(),rhs.getCreated())
                 .isEquals();
     }
 
@@ -109,7 +88,6 @@ public class UserPageModel extends WebPage{
                 .append(getPassword())
                 .append(getFirstName())
                 .append(getSecondName())
-                .append(getCreated())
                 .toHashCode();
     }
 
@@ -122,7 +100,6 @@ public class UserPageModel extends WebPage{
                 .append("password", getPassword())
                 .append("firstName", getFirstName())
                 .append("secondName", getSecondName())
-                .append("created", getCreated())
                 .toString();
     }
 }

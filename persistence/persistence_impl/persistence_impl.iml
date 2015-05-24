@@ -5,8 +5,8 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext-persistence-jpa.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-persistence-jpa-repositories.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext-persistence-jpa-datasource.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-persistence-jpa-repositories.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -15,7 +15,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="com_home_user_persistence_unit" value="dataSource" />
+          <factory-entry name="com_home_user_persistence_unit" value="b0405a9a-0180-45b7-a0a9-ddde48ee6611" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>

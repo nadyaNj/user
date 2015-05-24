@@ -1,5 +1,6 @@
 package com.home.user.services.user.model;
 
+import com.home.user.services.common.converter.PersistentLocalDateTimeConverter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
- /**
+/**
  * Created: Nadya Dainelyan
  * DATE:    5/14/15
  * TIME:    11:47 AM
@@ -25,24 +26,27 @@ public class User implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "userName")
+    @Column(name = "user_name")
     private String name;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String fistName;
 
-    @Column(name = "secondName")
+    @Column(name = "second_name")
     private String secondName;
 
+    @Convert(converter = PersistentLocalDateTimeConverter.class)
     @Column(name = "created")
     private LocalDateTime created;
 
+    @Convert(converter = PersistentLocalDateTimeConverter.class)
     @Column(name = "updated")
     private LocalDateTime updated;
 
+    @Convert(converter = PersistentLocalDateTimeConverter.class)
     @Column(name = "removed")
     private LocalDateTime removed;
 
@@ -64,31 +68,31 @@ public class User implements Serializable {
         this.name = name;
     }
 
-     public String getPassword() {
-         return password;
-     }
+    public String getPassword() {
+        return password;
+    }
 
-     public void setPassword(String password) {
-         this.password = password;
-     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-     public String getFistName() {
-         return fistName;
-     }
+    public String getFistName() {
+        return fistName;
+    }
 
-     public void setFistName(String fistName) {
-         this.fistName = fistName;
-     }
+    public void setFistName(String fistName) {
+        this.fistName = fistName;
+    }
 
-     public String getSecondName() {
-         return secondName;
-     }
+    public String getSecondName() {
+        return secondName;
+    }
 
-     public void setSecondName(String secondName) {
-         this.secondName = secondName;
-     }
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
 
-     public LocalDateTime getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
@@ -113,56 +117,56 @@ public class User implements Serializable {
     }
 
 
-     @Override
-     public boolean equals(Object obj) {
-         if (obj == null) {
-             return false;
-         }
-         if (obj == this) {
-             return true;
-         }
-         if (obj.getClass() != getClass()) {
-             return false;
-         }
-         User rhs = (User) obj;
-         return new EqualsBuilder()
-                 .append(this.id, rhs.id)
-                 .append(this.name, rhs.name)
-                 .append(this.password, rhs.password)
-                 .append(this.fistName, rhs.fistName)
-                 .append(this.secondName, rhs.secondName)
-                 .append(this.created, rhs.created)
-                 .append(this.updated, rhs.updated)
-                 .append(this.removed, rhs.removed)
-                 .isEquals();
-     }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        User rhs = (User) obj;
+        return new EqualsBuilder()
+                .append(this.getId(), rhs.getId())
+                .append(this.getName(), rhs.getName())
+                .append(this.getPassword(), rhs.getPassword())
+                .append(this.getFistName(), rhs.getFistName())
+                .append(this.getSecondName(), rhs.getSecondName())
+                .append(this.getCreated(), rhs.getCreated())
+                .append(this.getUpdated(), rhs.getUpdated())
+                .append(this.getRemoved(), rhs.getRemoved())
+                .isEquals();
+    }
 
-     @Override
-     public int hashCode() {
-         return new HashCodeBuilder()
-                 .append(id)
-                 .append(name)
-                 .append(password)
-                 .append(fistName)
-                 .append(secondName)
-                 .append(created)
-                 .append(updated)
-                 .append(removed)
-                 .toHashCode();
-     }
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(getId())
+                .append(getName())
+                .append(getPassword())
+                .append(getFistName())
+                .append(getSecondName())
+                .append(getCreated())
+                .append(getUpdated())
+                .append(getRemoved())
+                .toHashCode();
+    }
 
 
-     @Override
-     public String toString() {
-         return new ToStringBuilder(this)
-                 .append("id", id)
-                 .append("name", name)
-                 .append("password", password)
-                 .append("fistName", fistName)
-                 .append("secondName", secondName)
-                 .append("created", created)
-                 .append("updated", updated)
-                 .append("removed", removed)
-                 .toString();
-     }
- }
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", getId())
+                .append("name", getName())
+                .append("password", getPassword())
+                .append("fistName", getFistName())
+                .append("secondName", getSecondName())
+                .append("created", getCreated())
+                .append("updated", getUpdated())
+                .append("removed", getRemoved())
+                .toString();
+    }
+}

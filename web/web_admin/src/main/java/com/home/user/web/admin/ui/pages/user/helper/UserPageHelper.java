@@ -10,6 +10,13 @@ import javax.annotation.Nonnull;
  * TIME:    12:18 AM
  */
 public interface UserPageHelper {
-    void createUser(@Nonnull final UserPageModel userPageModel);
-    
+
+
+    /**
+     * Create user
+     *
+     * @param pageModel page model
+     */
+    void createUser(@Nonnull final UserPageModel pageModel);
+
 }

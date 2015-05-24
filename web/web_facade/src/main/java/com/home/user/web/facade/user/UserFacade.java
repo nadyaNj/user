@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by nadya on 5/14/15.
  */
-public interface UserModelFacade {
+public interface UserFacade {
 
 
     @Nonnull
@@ -19,9 +19,9 @@ public interface UserModelFacade {
 
     @Nonnull
     List<UserFacadeModel> getAll();
-    
+
     @Nonnull
-    UserModelFacade createUser(final UserDto userDto);
+    UserFacadeModel createUser(final UserDto userDto);
 
 
 }

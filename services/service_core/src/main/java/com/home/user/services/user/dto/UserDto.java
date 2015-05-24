@@ -5,7 +5,7 @@ import com.home.user.services.user.model.User;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
- /**
+/**
  * Created: Nadya Dainelyan
  * DATE:    5/14/15
  * TIME:    7:25 PM
@@ -69,7 +69,7 @@ public class UserDto implements Serializable {
         this.password = password;
     }
 
-     public LocalDateTime getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
@@ -77,13 +77,12 @@ public class UserDto implements Serializable {
         this.created = created;
     }
 
-     public void updateDomainEntityModelProperties(final User entity) {
-         entity.setName(getName());
-         entity.setPassword(getPassword());
-         entity.setSecondName(getSecondName());
-         entity.setFistName(getFirstName());
-         entity.setCreated(getCreated());
-     }
+    public void updateDomainEntityModelProperties(final User entity) {
+        entity.setName(getName());
+        entity.setPassword(getPassword());
+        entity.setSecondName(getSecondName());
+        entity.setFistName(getFirstName());
+    }
 
 
 }

@@ -5,7 +5,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * Created: Nadya Dainelyan
@@ -25,8 +24,6 @@ public class UserFacadeModel implements Serializable {
     private String secondName;
 
     private String password;
-
-    private LocalDateTime created;
 
     public String getName() {
         return name;
@@ -61,14 +58,6 @@ public class UserFacadeModel implements Serializable {
         this.password = password;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -87,7 +76,6 @@ public class UserFacadeModel implements Serializable {
                 .append(this.getFirstName(), rhs.getFirstName())
                 .append(this.getSecondName(), rhs.getSecondName())
                 .append(this.getPassword(), rhs.getPassword())
-                .append(this.getCreated(), rhs.getCreated())
                 .isEquals();
     }
 
@@ -98,7 +86,6 @@ public class UserFacadeModel implements Serializable {
                 .append(getFirstName())
                 .append(getSecondName())
                 .append(getPassword())
-                .append(getCreated())
                 .toHashCode();
     }
 
@@ -110,7 +97,6 @@ public class UserFacadeModel implements Serializable {
                 .append("firstName", getFirstName())
                 .append("secondName", getSecondName())
                 .append("password", getPassword())
-                .append("created", getCreated())
                 .toString();
     }
 }

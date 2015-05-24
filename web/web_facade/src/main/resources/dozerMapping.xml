@@ -6,7 +6,7 @@
 
     <mapping>
         <class-a>com.home.user.services.user.model.User</class-a>
-        <class-b>com.home.user.facade.user.model.UserModelFacadeModel</class-b>
+        <class-b>com.home.user.web.facade.user.model.UserFacadeModel</class-b>
     </mapping>
 
 </mappings>
